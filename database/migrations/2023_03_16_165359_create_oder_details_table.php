@@ -15,6 +15,13 @@ class CreateOderDetailsTable extends Migration
     {
         Schema::create('oder_details', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('order_id')->unsigned();
+            $table->integer('product_id')->unsigned();
+            $table->integer('qty');
+            $table->double('amount');
+            $table->double('total');
+
             $table->timestamps();
         });
     }

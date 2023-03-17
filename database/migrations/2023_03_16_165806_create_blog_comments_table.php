@@ -15,6 +15,13 @@ class CreateBlogCommentsTable extends Migration
     {
         Schema::create('blog_comments', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('blog_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('email');
+            $table->string('name');
+            $table->string('messages');
+
             $table->timestamps();
         });
     }

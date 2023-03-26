@@ -14,6 +14,6 @@ class ProductImage extends Model
     // thiết lâp mối quan hệ với bảng 
     public function product()
     {
-        return $this->belongsTo(ProductComment::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

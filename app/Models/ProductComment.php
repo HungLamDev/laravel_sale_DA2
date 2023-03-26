@@ -18,7 +18,7 @@ class ProductComment extends Model
         return $this->belongsTo(ProductComment::class, 'product_id', 'id');
     }
     // thiết lâp mối quan hệ với bảng 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Front\ShopController;
+use App\Repositories\Product\ProductRepositoriesinterface;
+use App\Service\Product\ProductServiceInterface;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-    //return \App\Models\Product::find(1)->brand;
-});
+// Route::get('/', function (ProductRepositoriesinterface $productRepository) {
+//     return view('front.index');
+//     //return \App\Models\Product::find(1)->brand;
+//     // return $productRepository->all();
+// });
+Route::get(
+    '/',
+    function () {
+        return view('front.index');
+        //return \App\Models\Product::find(1)->brand;
+        //return $productservice->all();
+    }
+);
+Route::get('shop/product/{id}', [ShopController::class, 'show']);

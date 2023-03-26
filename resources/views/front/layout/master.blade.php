@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <base href="{{ asset('/') }}">
     <meta charset="UTF-8">
     <meta name="description" content="codelean Template">
     <meta name="keywords" content="codelean, unica, creative, html">
@@ -52,9 +53,10 @@
                 <a href="login.html" class="login-panel"><i class="fa fa-user"></i> login</a>
                 <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width: 300px;">
-                        <option value="yt" data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">
+                        <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt"
+                            data-title="English">
                             English</option>
-                        <option value="yt" data-image="img/flag-2.jpg" data-imagecss="flag yt"
+                        <option value="yt" data-image="front/img/flag-2.jpg" data-imagecss="flag yt"
                             data-title="Bangladesh">German</option>
                     </select>
                 </div>
@@ -73,7 +75,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="img/logo.png" height="25" alt="">
+                                <img src="front/img/logo.png" height="25" alt="">
                             </a>
                         </div>
                     </div>
@@ -193,27 +195,27 @@
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="front/img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
+                        <img src="front/img/logo-carousel/logo-2.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
+                        <img src="front/img/logo-carousel/logo-3.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
+                        <img src="front/img/logo-carousel/logo-4.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
+                        <img src="front/img/logo-carousel/logo-5.png" alt="">
                     </div>
                 </div>
             </div>
@@ -228,7 +230,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <a href="index.html">
-                            <img src="img/footer-logo.png" height="25" alt="">
+                            <img src="front/img/footer-logo.png" height="25" alt="">
                         </a>
                     </div>
                     <ul>
@@ -287,7 +289,7 @@
                             </script>
                         </div>
                         <div class="payment-pic">
-                            <img src="img/payment-method.png" alt="">
+                            <img src="front/img/payment-method.png" alt="">
                         </div>
                     </div>
                 </div>

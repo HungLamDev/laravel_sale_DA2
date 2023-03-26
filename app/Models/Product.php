@@ -24,7 +24,7 @@ class Product extends Model
     // thiết lâp mối quan hệ với bảng 
     public function productImages()
     {
-        return $this->hasMany(ProductImage::class, 'product_images_id', 'id');
+        return $this->hasMany(productImage::class, 'product_id', 'id');
     }
     // thiết lâp mối quan hệ với bảng 
     public function productDetails()

@@ -226,7 +226,8 @@
                                     <li><a class="active" href="#tab-1" data-toggle="tab"
                                             role="tab">DESCRIPTION</a></li>
                                     <li><a href="#tab-2" data-toggle="tab" role="tab">SPECIFICATIONS</a></li>
-                                    <li><a href="#tab-3" data-toggle="tab" role="tab">Customer Reviews (02)</a></li>
+                                    <li><a href="#tab-3" data-toggle="tab" role="tab">Customer Reviews
+                                            ({{ count($product->productComments) }})</a></li>
                                 </ul>
                             </div>
                             <div class="tab-item-content">
@@ -299,7 +300,8 @@
                                                     <td class="p-catagory">Color</td>
                                                     <td>
                                                         @foreach (array_unique(array_column($product->productDetails->toArray(), 'color')) as $productColor)
-                                                            <span class="cs-{{ $productColor }}"> </span>
+                                                            <span
+                                                                class="cs-{{ $productColor }}">{{ $productColor }},</span>
                                                         @endforeach
                                                     </td>
                                                 </tr>
@@ -316,64 +318,69 @@
                                     </div>
                                     <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                         <div class="customer-review-option">
-                                            <h4>2 Comments</h4>
+                                            <h4>{{ count($product->productComments) }} Comments</h4>
                                             <div class="comment-option">
-                                                <div class="co-item">
-                                                    <div class="avatar-pic">
-                                                        <img src="{{ asset('img/product-single/avatar-1.png') }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="avatar-text">
-                                                        <div class="at-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-0"></i>
+                                                @foreach ($product->productComments as $productComment)
+                                                    <div class="co-item">
+                                                        <div class="avatar-pic">
+                                                            <img src="front/img/user/{{ $productComment->user->avatar ?? 'default-avatar.jpg' }}"
+                                                                alt="">
                                                         </div>
-                                                        <h5>NgoVan Kien <span>18 Mrc 2022</span></h5>
-                                                        <div class="at-reply">Nice one !</div>
-                                                    </div>
-                                                </div>
-                                                <div class="co-item">
-                                                    <div class="avatar-pic">
-                                                        <img src="img/product-single/avatar-1.png" alt="">
-                                                    </div>
-                                                    <div class="avatar-text">
-                                                        <div class="at-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-0"></i>
+                                                        <div class="avatar-text">
+                                                            <div class="at-rating">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    @if ($i <= $product->avgRating)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @else
+                                                                        <i class="fa fa-star-0"></i>
+                                                                    @endif
+                                                                @endfor
+                                                            </div>
+                                                            <h5>{{ $productComment->name }}<span>{{ date('M d,Y', strtotime($productComment->crteated_at)) }}</span>
+                                                            </h5>
+                                                            <div class="at-reply">{{ $productComment->messages }}!</div>
                                                         </div>
-                                                        <h5>Tyson Ngo<span>24 Mrc 2022</span></h5>
-                                                        <div class="at-reply">Nice try!</div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="personal-rating">
-                                                <h6>Your Rating</h6>
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-0"></i>
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                             <div class="leave-comment">
                                                 <h4>Leave A Comment</h4>
-                                                <form action="" class="comment-form">
+                                                <form action="" method="POST" class="comment-form">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="user_id"
+                                                        value="{{ \Illuminate\Support\Facades\Auth::user()->id ?? null }}">
+
                                                     <div class="row">
                                                         <div class="col-lg-6">
-                                                            <input type="text" placeholder="Name">
+                                                            <input type="text" placeholder="Name" name="name">
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <input type="text" placeholder="Email">
+                                                            <input type="text" placeholder="Email" name="email">
                                                         </div>
                                                         <div class="col-lg-12">
-                                                            <textarea placeholder="Messages"></textarea>
+                                                            <textarea placeholder="Messages" name="messages"></textarea>
+                                                            <div class="personal-rating">
+                                                                <h6>Your Rating</h6>
+                                                                <div class="rate">
+                                                                    <input type="radio" id="star5" name="rating"
+                                                                        value="5" />
+                                                                    <label for="star5" title="text">5 stars</label>
+                                                                    <input type="radio" id="star4" name="rating"
+                                                                        value="4" />
+                                                                    <label for="star4" title="text">4 stars</label>
+                                                                    <input type="radio" id="star3" name="rating"
+                                                                        value="3" />
+                                                                    <label for="star3" title="text">3 stars</label>
+                                                                    <input type="radio" id="star2" name="rating"
+                                                                        value="2" />
+                                                                    <label for="star2" title="text">2 stars</label>
+                                                                    <input type="radio" id="star1" name="rating"
+                                                                        value="1" />
+                                                                    <label for="star1" title="text">1 star</label>
+                                                                </div>
+                                                            </div>
                                                             <button type="submit" class="site-btn">Send message</button>
                                                         </div>
                                                     </div>

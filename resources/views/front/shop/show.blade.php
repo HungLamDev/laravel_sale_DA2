@@ -316,41 +316,30 @@
                                     </div>
                                     <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                         <div class="customer-review-option">
-                                            <h4>2 Comments</h4>
+                                            <h4>{{ count($product->productComments) }} Comments</h4>
                                             <div class="comment-option">
-                                                <div class="co-item">
-                                                    <div class="avatar-pic">
-                                                        <img src="{{ asset('img/product-single/avatar-1.png') }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="avatar-text">
-                                                        <div class="at-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-0"></i>
+                                                @foreach ($product->productComments as $productComment)
+                                                    <div class="co-item">
+                                                        <div class="avatar-pic">
+                                                            <img src="front/img/user/{{ $productComment->user->avatar ?? 'default-avatar.jpg' }}"
+                                                                alt="">
                                                         </div>
-                                                        <h5>NgoVan Kien <span>18 Mrc 2022</span></h5>
-                                                        <div class="at-reply">Nice one !</div>
-                                                    </div>
-                                                </div>
-                                                <div class="co-item">
-                                                    <div class="avatar-pic">
-                                                        <img src="img/product-single/avatar-1.png" alt="">
-                                                    </div>
-                                                    <div class="avatar-text">
-                                                        <div class="at-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-0"></i>
+                                                        <div class="avatar-text">
+                                                            <div class="at-rating">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    @if ($i <= $product->avgRating)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @else
+                                                                        <i class="fa fa-star-0"></i>
+                                                                    @endif
+                                                                @endfor
+                                                            </div>
+                                                            <h5>{{ $productComment->name }}<span>{{ date('M d,Y', strtotime($productComment->crteated_at)) }}</span>
+                                                            </h5>
+                                                            <div class="at-reply">{{ $productComment->message }}!</div>
                                                         </div>
-                                                        <h5>Tyson Ngo<span>24 Mrc 2022</span></h5>
-                                                        <div class="at-reply">Nice try!</div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                             <div class="personal-rating">
                                                 <h6>Your Rating</h6>

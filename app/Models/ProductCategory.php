@@ -14,6 +14,6 @@ class ProductCategory extends Model
     // thiết lâp mối quan hệ với bảng 
     public function products()
     {
-        return $this->hasMany(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class, 'product_category_id', 'id');
     }
 }

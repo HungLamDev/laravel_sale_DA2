@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BlogComment extends Model
 {
     use HasFactory;
-    protected $table = 'blog_commets';
+    protected $table = 'blog_comments';
     protected $primarykey  = 'id';
     protected $guarded = [];
 

@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.0/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('front/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('front/css/themify-icons.css') }}" type="text/css">
@@ -80,13 +81,16 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search">
-                            <button type="button" class="category-btn">All categories</button>
-                            <div class="input-group">
-                                <input type="text" placeholder="Bạn đang muốn tìm kiếm ?">
-                                <button type="button"><i class="ti-search"></i></button>
+                        <form action="shop">
+                            <div class="advanced-search">
+                                <button type="button" class="category-btn">All categories</button>
+                                <div class="input-group">
+                                    <input name="search" value="{{ request('search') }}" type="text"
+                                        placeholder="Bạn đang muốn tìm kiếm ?">
+                                    <button type="button"><i class="ti-search"></i></button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-lg-3 col-md-3 text-right">
                         <ul class="nav-right">
@@ -97,41 +101,46 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="./cart">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <span class="cart-count">{{ Cart::count() }}</span>
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
                                         <table>
                                             <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="img/select-product-1.jpg"
-                                                            alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Ngo Van Kien</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
+                                                @foreach (Cart::content() as $cart)
+                                                    <tr data-rowId="{{ $cart->rowId }}">
+                                                        <td class="si-pic"><img
+                                                                src="front/img/products/{{ $cart->options->images[0]->path }}"
+                                                                alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>{{ $cart->price }} x {{ $cart->qty }}</p>
+                                                                <h6>{{ $cart->name }}</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i onclick="removeCart('{{ $cart->rowId }}')"
+                                                                class="ti-close"></i>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <h5>{{ Cart::total() }}</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="shopping-cart.html" class="primary-btn view-card">View Card</a>
-                                        <a href="check-out.html" class="primary-btn checkout-btn">Check Out</a>
+                                        <a href="cart" class="primary-btn view-card">Xem Giỏ Hàng</a>
+                                        <a href="check-out.html" class="primary-btn checkout-btn">Thanh Toán</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <li class="cart-price">{{ Cart::total() }}</li>
                         </ul>
                     </div>
                 </div>
@@ -145,21 +154,23 @@
                         <i class="ti-menu"></i>
                         <span>All departments</span>
                         <ul class="depart-hover">
-                            <li class="active"><a href="#"></a>Men's Clothing</li>
-                            <li><a href="#"></a>Women's Clothing</li>
-                            <li><a href="#"></a>Underwear</li>
-                            <li><a href="#"></a>Kid's Clothing</li>
-                            <li><a href="#"></a>Brand</li>
-                            <li><a href="#"></a>Accessories Shoes</li>
-                            <li><a href="#"></a>Luxury Brands</li>
-                            <li><a href="#"></a>brand Outdoor Apparel</li>
+                            <li class="active"><a href="#">Men's Clothing</a></li>
+                            <li><a href="#">Women's Clothing</a></li>
+                            <li><a href="#">Underwear</a></li>
+                            <li><a href="#">Kid's Clothing</a></li>
+                            <li><a href="#">Brand</a></li>
+                            <li><a href="#">Accessories Shoes</a></li>
+                            <li><a href="#">Luxury Brands</a></li>
+                            <li><a href="#">Outdoor Apparel</a></li>
                         </ul>
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
+                        <li class="{{ request()->segment(1) == '' ? 'active' : '' }}"><a href="./">Home</a>
+                        </li>
+                        <li class="{{ request()->segment(1) == 'shop' ? 'active' : '' }}"><a href="./shop">Shop</a>
+                        </li>
                         <li><a href="">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="">Men's</a></li>
@@ -172,7 +183,7 @@
                         <li><a href="">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="blog-details.html">Blog Details</a></li>
-                                <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                                <li><a href="./cart">Shopping Cart</a></li>
                                 <li><a href="check-out.html">Checkout</a></li>
                                 <li><a href="faq.html">Faq</a></li>
                                 <li><a href="register.html">Register</a></li>
@@ -298,15 +309,17 @@
     </footer>
     <!-- Footer Section End -->
     <!-- Js Plugins -->
-    <script src="{{ asset('front/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('front/js/main.js') }}"></script> --}}
     <script src="{{ asset('front/js/jquery-3.3.1.min.js') }} "></script>
     <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('front/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('front/js/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('front/js/jquery.zoom.min.js') }} "></script>
+    <script src="{{ asset('front/js/jquery.nice-select.min.js') }} "></script>
     <script src="{{ asset('front/js/jquery.dd.min.js') }} "></script>
     <script src="{{ asset('front/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('front/js/owlcarousel2-filter.min.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
 
 

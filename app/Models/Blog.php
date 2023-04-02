@@ -13,7 +13,7 @@ class Blog extends Model
     protected $guarded = [];
 
     // thiết lâp mối quan hệ với bảng blog_commets
-    public function blog_commets()
+    public function blog_comments()
     {
         return $this->hasMany(BlogComment::class, 'blog_id', 'id');
     }

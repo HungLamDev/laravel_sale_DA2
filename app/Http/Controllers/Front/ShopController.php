@@ -19,18 +19,18 @@ class ShopController extends Controller
     private $brandService;
     // ProductCommentServiceinterface $productCommentService
 
-    public function __construct(ProductServiceInterface $productService, ProductCategoryServiceinterface $productCategoryService, ProductCommentServiceinterface $productCommentService)
+    public function __construct(ProductServiceInterface $productService, ProductCategoryServiceinterface $productCategoryService, ProductCommentServiceinterface $productCommentService,)
     {
         $this->productService = $productService;
         $this->productCommentService = $productCommentService;
         $this->productCategoryService = $productCategoryService;
-        //$this->brandService = $brandService;
+        // $this->brandService = $brandService;
     }
 
     public function show($id)
     {
         $categories = $this->productCategoryService->all();
-        // $brands = $this->brandService->all();
+        //$brands = $this->brandService->all();
         $product = $this->productService->find($id);
         $relatedProduct = $this->productService->getRelatedProducts($product);
 

@@ -24,16 +24,25 @@ class DatabaseSeeder extends Seeder
                 'email' => 'lvhung2000524@gmail.com',
                 'password' => Hash::make('123456'),
                 'avatar' => '',
-                'level' => 0,
-                'description' => '',
+                'level' => 2,
+                'description' => 'hung',
+                'company_name' => 'phu kien gia soc',
+                'country' => 'viet nam',
+                'street_address' => '54 nguyen viet hồng',
+                'postcode_zip' => '1000',
+                'town_city' => 'can tho',
+                'phone' => '0772190841',
             ],
+        ]);
+        DB::table('users')->insert([
+
             [
                 'id' => 2,
                 'name' => 'Văn Kiện',
                 'email' => 'nvkien2000710@gmail.com',
                 'password' => Hash::make('123456'),
                 'avatar' => '',
-                'level' => 0,
+                'level' => 2,
                 'description' => '',
             ],
             [

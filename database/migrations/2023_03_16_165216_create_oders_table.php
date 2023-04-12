@@ -13,13 +13,25 @@ class CreateOdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('oders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('oder_id')->unsigned();
-            $table->integer('product_id')->unsigned();
-            $table->integer('qty');
-            $table->double('amount');
-            $table->double('total');
+
+
+            $table->integer('user_id')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('company_name')->nullable();
+            $table->string('country_name');
+            $table->string('street_address');
+            $table->string('postcode_zip');
+            $table->string('town_city');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('payment_type');
+            $table->integer('status')->nullable();
+
+
+
             $table->timestamps();
         });
     }

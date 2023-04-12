@@ -14,6 +14,6 @@ class Order extends Model
     // thiết lâp mối quan hệ với bảng blog_commets
     public function orderDetails()
     {
-        return $this->hasMany(OrderDails::class, 'order_id', 'id');
+        return $this->hasMany(orderDetail::class, 'order_id', 'id');
     }
 }

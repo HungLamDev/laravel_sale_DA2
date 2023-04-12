@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Front\AccountController;
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckOutController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ShopController;
 use App\Repositories\Product\ProductRepositoriesinterface;
@@ -36,4 +38,22 @@ Route::prefix('cart')->group(function () {
     Route::get('add', [CartController::class, 'add']);
     Route::get('/', [CartController::class, 'index']);
     Route::get('delete', [CartController::class, 'delete']);
+    Route::get('destroy', [CartController::class, 'destroy']);
+    Route::get('update', [CartController::class, 'update']);
+});
+Route::prefix('checkout')->group(function () {
+    route::get('', [CheckOutController::class, 'index']);
+    route::post('/', [CheckOutController::class, 'addOrder']);
+    route::get('/result', [CheckOutController::class, 'result']);
+});
+Route::prefix('account')->group(function () {
+    route::get('login', [AccountController::class, 'login']);
+    route::post('login', [AccountController::class, 'checkLogin']);
+    route::get('logout', [AccountController::class, 'logout']);
+    route::get('register', [AccountController::class, 'register']);
+    route::post('register', [AccountController::class, 'postRegister']);
+    Route::prefix('my-order')->middleware('CheckMemberLogin')->group(function () {
+        route::get('/', [AccountController::class, 'myOrderIndex']);
+        route::get('{id}', [AccountController::class, 'myOrderShow']);
+    });
 });

@@ -38,8 +38,8 @@
     <!-- Header Section Begin -->
     <Header class="header-section">
         <div class="header-top">
-            <div class="ht-left">
-                <div class="container">
+            <div class="container">
+                <div class="ht-left">
                     <div class="mail-service">
                         <i class="fa fa-envelope"></i>
                         nvkien2000710@student.ctuet.edu.vn
@@ -49,25 +49,32 @@
                         +84 941840***
                     </div>
                 </div>
-            </div>
-            <div class="ht-right">
-                <a href="login.html" class="login-panel"><i class="fa fa-user"></i> login</a>
-                <div class="lan-selector">
-                    <select class="language_drop" name="countries" id="countries" style="width: 300px;">
-                        <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt"
-                            data-title="English">
-                            English</option>
-                        <option value="yt" data-image="front/img/flag-2.jpg" data-imagecss="flag yt"
-                            data-title="Bangladesh">German</option>
-                    </select>
+
+                <div class="ht-right">
+                    @if (Auth::check())
+                        <a href="./account/logout" class="login-panel"><i
+                                class="fa fa-user"></i>{{ Auth::user()->name }} - Đăng Xuất</a>
+                    @else
+                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i> login</a>
+                    @endif
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width: 250px;">
+                            <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt"
+                                data-title="English">
+                                English</option>
+                            <option value="yt" data-image="front/img/flag-2.jpg" data-imagecss="flag yt"
+                                data-title="Bangladesh">German</option>
+                        </select>
+                    </div>
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-instagram"></i></a>
+                        <a href="#"><i class="ti-twitter"></i></a>
+                        <a href="#"><i class="ti-youtube"></i></a>
+                    </div>
                 </div>
-                <div class="top-social">
-                    <a href="#"><i class="ti-facebook"></i></a>
-                    <a href="#"><i class="ti-instagram"></i></a>
-                    <a href="#"><i class="ti-twitter"></i></a>
-                    <a href="#"><i class="ti-youtube"></i></a>
-                </div>
             </div>
+
         </div>
 
         <div class="container">
@@ -135,8 +142,8 @@
                                         <h5>{{ Cart::total() }}</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="cart" class="primary-btn view-card">Xem Giỏ Hàng</a>
-                                        <a href="check-out.html" class="primary-btn checkout-btn">Thanh Toán</a>
+                                        <a href="./cart" class="primary-btn view-card">Xem Giỏ Hàng</a>
+                                        <a href="./checkout" class="primary-btn checkout-btn">Thanh Toán</a>
                                     </div>
                                 </div>
                             </li>
@@ -182,12 +189,14 @@
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="blog-details.html">Blog Details</a></li>
+                                <li><a href="./account/my-order/">My Order</a></li>
+                                <li><a href="blog-details.html">Blog
+                                        Details</a></li>
                                 <li><a href="./cart">Shopping Cart</a></li>
-                                <li><a href="check-out.html">Checkout</a></li>
+                                <li><a href="./checkout">Checkout</a></li>
                                 <li><a href="faq.html">Faq</a></li>
                                 <li><a href="register.html">Register</a></li>
-                                <li><a href="login.html">Login</a></li>
+                                <li><a href="./account/login">Login</a></li>
                             </ul>
                         </li>
                     </ul>

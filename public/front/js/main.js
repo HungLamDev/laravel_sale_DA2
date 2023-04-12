@@ -279,6 +279,10 @@
             }
         }
         $button.parent().find("input").val(newVal);
+        //update card
+
+        var rowId = $button.parent().find("input").data("rowid");
+        updateCart(rowId, newVal);
     });
     /*-------------------
 		bộ lọc sản phẩm ở trang chủ 
@@ -390,6 +394,90 @@ function removeCart(rowId) {
         },
         error: function (response) {
             alert("Xóa sản phẩm thất bại");
+            console.log(response);
+        },
+    });
+}
+function destroyCart() {
+    $.ajax({
+        type: "GET",
+        url: "cart/destroy",
+        data: {},
+        success: function (response) {
+            //xử lý cart hover trong master page
+            $(".cart-count").text("0");
+            $(".cart-price").text("0");
+            $(".select-total h5").text("0");
+
+            var carHover_tbody = $(".select-items tbody");
+            carHover_tbody.children().remove;
+
+            //xử lý ở trang index shop/cart
+            var cart_tbody = $(".cart-table tbody");
+            cart_tbody.children().remove();
+
+            $(".subtotal span").text("0");
+            $(".cart-total span").text("0");
+            alert("Xóa sản phẩm" + response["cart"].name + "Thành Công!");
+            console.log(response);
+        },
+        error: function (response) {
+            alert("Xóa sản phẩm thất bại");
+            console.log(response);
+        },
+    });
+}
+function updateCart(rowId, qty) {
+    $.ajax({
+        type: "GET",
+        url: "cart/update",
+        data: { rowId: rowId, qty: qty },
+        success: function (response) {
+            //xử lý cart hover trong master page
+            $(".cart-count").text(response["count"]);
+            $(".cart-price").text(response["total"] + "vnđ");
+            $(".select-total h5").text(response["total"] + "vnđ");
+
+            var cartHover_tbody = $(".select-items tbody");
+            var cartHover_existItem = cartHover_tbody.find(
+                "tr" + "[data-rowId='" + rowId + "']"
+            );
+            if (qty === 0) {
+                cartHover_existItem.remove();
+            } else {
+                cartHover_existItem
+                    .find(".product-selected p")
+                    .text(
+                        response["cart"].price.toFixed(2) +
+                            "vnđ" +
+                            "x" +
+                            response["cart"].qty
+                    );
+            }
+
+            //xử lý ở trang index shop/cart
+            var cart_tbody = $(".cart-table tbody");
+            var cart_existItem = cart_tbody.find(
+                "tr" + "[data-rowId='" + rowId + "']"
+            );
+            if (qty === 0) {
+                cart_existItem.remove();
+            } else {
+                cart_existItem
+                    .find(".total-price")
+                    .text(
+                        (response["cart"].price * response["cart"].qty).toFixed(
+                            2
+                        ) + "vnđ"
+                    );
+            }
+            $(".subtotal span").text(response["subtotal"] + "vnđ");
+            $(".cart-total span").text(response["total"] + "vnđ");
+            alert("Cập nhật sản phẩm" + response["cart"].name + "Thành Công!");
+            console.log(response);
+        },
+        error: function (response) {
+            alert("Cập nhật sản phẩm thất bại");
             console.log(response);
         },
     });

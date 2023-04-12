@@ -7,7 +7,7 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\CircularDependencyException;
-use Illuminate\Contracts\Container\Container as ContainerContract;
+use Illuminate\Contracts\Container\Container as  ContainerContract;
 use LogicException;
 use ReflectionClass;
 use ReflectionException;
@@ -972,6 +972,7 @@ class Container implements ArrayAccess, ContainerContract
         );
     }
 
+
     /**
      * Get a parameter override for a dependency.
      *
@@ -1407,10 +1408,15 @@ class Container implements ArrayAccess, ContainerContract
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function offsetExists($key)
+    public function offsetExists(mixed $key): bool
     {
-        return $this->bound($key);
+        return $this->bound($key) || $this->resolved($key);
     }
+    // public function offsetExists($key)
+    // {
+    //     //return $this->bound($key);
+    //     return $this->bound($key) || $this->resolved($key);
+    // }
 
     /**
      * Get the value at a given offset.
@@ -1432,12 +1438,21 @@ class Container implements ArrayAccess, ContainerContract
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet($key, $value)
+    public function offsetSet($offset, $value): void
     {
-        $this->bind($key, $value instanceof Closure ? $value : function () use ($value) {
+        $this->bind($offset, $value instanceof Closure ? $value : function () use ($value) {
             return $value;
         });
     }
+
+
+    // public function offsetSet($key, $value)
+    // {
+
+    //     $this->bind($key, $value instanceof Closure ? $value : function () use ($value) {
+    //         return $value;
+    //     });
+    // }
 
     /**
      * Unset the value at a given offset.
@@ -1446,7 +1461,7 @@ class Container implements ArrayAccess, ContainerContract
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($key)
+    public function offsetUnset(mixed $key): void
     {
         unset($this->bindings[$key], $this->instances[$key], $this->resolved[$key]);
     }

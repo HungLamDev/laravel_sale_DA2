@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Front\AccountController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckOutController;
@@ -20,11 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function (ProductRepositoriesinterface $productRepository) {
-//     return view('front.index');
-//     //return \App\Models\Product::find(1)->brand;
-//     // return $productRepository->all();
-// });
+//Front Client 
 Route::get('/', [HomeController::class, 'index']);
 Route::prefix('shop')->group(function () {
     Route::get('product/{id}', [ShopController::class, 'show']);
@@ -56,4 +54,15 @@ Route::prefix('account')->group(function () {
         route::get('/', [AccountController::class, 'myOrderIndex']);
         route::get('{id}', [AccountController::class, 'myOrderShow']);
     });
+    //admin-Dashboaard
+
+});
+Route::prefix('admin')->group(function () {
+    Route::redirect('', 'admin/user');
+    Route::resource('user', UserController::class);
+    Route::prefix('login')->group(function () {
+        route::get('', [\App\Http\Controllers\Admin\HomeController::class, 'getLogin']);
+        route::post('', [\App\Http\Controllers\Admin\HomeController::class, 'postLogin']);
+    });
+    Route::get('logout', [\App\Http\Controllers\Admin\HomeController::class, 'logout']);
 });

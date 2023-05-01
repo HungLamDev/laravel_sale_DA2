@@ -2,15 +2,15 @@
 
 namespace App\Service\Brand;
 
+use App\Repositories\Brand\BrandRepositoryinterface;
 use App\Service\BaseService;
-use App\Service\Brand\BrandServiceinterface;
 
 class BrandService extends BaseService implements BrandServiceinterface
 {
 
      public $repository;
-     public function __construct(BrandServiceinterface $BrandService)
+     public function __construct(BrandRepositoryinterface $BrandRepository)
      {
-          $this->repository = $BrandService;
+          $this->repository = $BrandRepository;
      }
 }

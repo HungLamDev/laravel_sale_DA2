@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Brand;
 
-use App\Repositories\BaseRepositories;
 use App\Models\Brand;
+use App\Repositories\BaseRepositories;
 
 class BrandRepository extends BaseRepositories implements BrandRepositoryinterface
 {

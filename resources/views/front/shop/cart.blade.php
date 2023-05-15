@@ -33,7 +33,9 @@
                                             <td class="cart-title first-row">
                                                 <h5>{{ $cart->name }}</h5>
                                             </td>
-                                            <td class="p-price first-row">{{ $cart->price }}</td>
+
+                                            <td class="p-price first-row">{{ number_format($cart->price, 0, ',', '.') }}
+                                            </td>
                                             <td class="qua-col first-row">
                                                 <div class="quantity">
                                                     <div class="pro-qty">
@@ -45,7 +47,7 @@
                                             <td
                                                 class="total-price
                                                             first-row">
-                                                {{ number_format($cart->price * $cart->qty, 2) }}
+                                                {{ number_format($cart->price * $cart->qty, 0, ',', '.') }}₫
                                             </td>
                                             <td class="close-td first-row"><i onclick="removeCart('{{ $cart->rowId }}')"
                                                     class="ti-close"></i></td>
@@ -72,8 +74,17 @@
                             <div class="col-lg-4 offset-lg-4">
                                 <div class="proceed-checkout">
                                     <ul>
-                                        <li class="sub-total">Subtotal<span>{{ $subtotal }}</span></li>
-                                        <li class="cart-total">Total<span>{{ $total }}</span></li>
+
+                                        <li class="fw-normal">Tổng thu
+
+                                            <span>{{ number_format($subtotal, 0, ',', '.') }}₫</span>
+                                        </li>
+                                        <li class="total-price">Tất Cả
+                                            <span>{{ number_format($total, 0, ',', '.') }}₫</span>
+                                        </li>
+
+
+
                                     </ul>
                                     <a href="./checkout" class="proceed-btn">Tiến hành thanh toán</a>
                                 </div>

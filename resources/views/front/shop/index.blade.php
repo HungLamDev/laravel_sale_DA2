@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Shop</span>
+                        <a href="#"><i class="fa fa-home"></i> TRANG CHỦ</a>
+                        <span>SẢN PHẨM</span>
                     </div>
                 </div>
             </div>
@@ -45,12 +45,15 @@
                                                 value="price-descending">Sắp xếp: Giá giảm dần </option>
                                         </select>
                                         <select name="show" onchange="this.form.submit()" class="p-show">
-                                            <option {{ request('show') == '3' ? 'selected' : '' }} value="3">Show: 03
+                                            <option {{ request('show') == '3' ? 'selected' : '' }} value="3">Hiện thị:
+                                                03 sản phẩm
                                             </option>
-                                            <option {{ request('show') == '9' ? 'selected' : '' }} value="9">Show: 09
+                                            <option {{ request('show') == '9' ? 'selected' : '' }} value="9">Hiện thị:
+                                                09 sản phẩm
                                             </option>
-                                            <option {{ request('show') == '15' ? 'selected' : '' }} value="15">Show:
-                                                15
+                                            <option {{ request('show') == '15' ? 'selected' : '' }} value="15">Hiện thị:
+                                                15 sản phẩm
+
                                             </option>
                                         </select>
                                     </div>

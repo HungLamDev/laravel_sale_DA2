@@ -46,7 +46,7 @@
                     </div>
                     <div class="phone-service">
                         <i class="fa fa-phone"></i>
-                        +84 941840***
+                        +84 941840847
                     </div>
                 </div>
 
@@ -55,17 +55,9 @@
                         <a href="./account/logout" class="login-panel"><i
                                 class="fa fa-user"></i>{{ Auth::user()->name }} - Đăng Xuất</a>
                     @else
-                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i> login</a>
+                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i>Đăng Nhập</a>
                     @endif
-                    <div class="lan-selector">
-                        <select class="language_drop" name="countries" id="countries" style="width: 250px;">
-                            <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt"
-                                data-title="English">
-                                English</option>
-                            <option value="yt" data-image="front/img/flag-2.jpg" data-imagecss="flag yt"
-                                data-title="Bangladesh">German</option>
-                        </select>
-                    </div>
+
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-instagram"></i></a>
@@ -90,7 +82,7 @@
                     <div class="col-lg-7 col-md-7">
                         <form action="shop">
                             <div class="advanced-search">
-                                <button type="button" class="category-btn">All categories</button>
+                                <button type="button " class="category-btn">Danh mục</button>
                                 <div class="input-group">
                                     <input name="search" value="{{ request('search') }}" type="text"
                                         placeholder="Bạn đang muốn tìm kiếm ?">
@@ -123,7 +115,8 @@
                                                                 alt=""></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                <p>{{ $cart->price }} x {{ $cart->qty }}</p>
+                                                                <p>{{ number_format(floatval($cart->price), 0, ',', '.') }}
+                                                                    x {{ $cart->qty }}</p>
                                                                 <h6>{{ $cart->name }}</h6>
                                                             </div>
                                                         </td>
@@ -138,8 +131,8 @@
                                         </table>
                                     </div>
                                     <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>{{ Cart::total() }}</h5>
+                                        <span>Tổng Cộng:</span>
+                                        <h5>{{ Cart::total(0, ',', ',') }}₫</h5>
                                     </div>
                                     <div class="select-button">
                                         <a href="./cart" class="primary-btn view-card">Xem Giỏ Hàng</a>
@@ -147,7 +140,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">{{ Cart::total() }}</li>
+                            <li class="cart-price">{{ Cart::total(0, ',', ',') }}₫</li>
                         </ul>
                     </div>
                 </div>
@@ -159,45 +152,57 @@
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All departments</span>
+                        <span>Tất Cả Sản phẩm</span>
                         <ul class="depart-hover">
-                            <li class="active"><a href="#">Men's Clothing</a></li>
-                            <li><a href="#">Women's Clothing</a></li>
-                            <li><a href="#">Underwear</a></li>
-                            <li><a href="#">Kid's Clothing</a></li>
-                            <li><a href="#">Brand</a></li>
-                            <li><a href="#">Accessories Shoes</a></li>
-                            <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Outdoor Apparel</a></li>
+                            <li class="active"><a href="#">Á0</a></li>
+                            <li><a href="#">QUẦN</a></li>
+                            <li><a href="#">QUẦN ÁO THỂ THAO</a></li>
+                            <li><a href="#">BALO - TÚI XÁCH</a></li>
+                            <li><a href="#">GIÀY DÉP</a></li>
+                            <li><a href="#">GIÀY DÉP</a></li>
+                            <li><a href="#">SET ÁO VEST</a></li>
+                            <li><a href="#">SET ÁO QUẦN</a></li>
+                            <li><a href="#">ĐỒ LÓT</a></li>
+                            <li><a href="#">SET ÁO QUẦN</a></li>
                         </ul>
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="{{ request()->segment(1) == '' ? 'active' : '' }}"><a href="./">Home</a>
+                        <li class="{{ request()->segment(1) == '' ? 'active' : '' }}"><a href="./">TRANG CHỦ</a>
                         </li>
-                        <li class="{{ request()->segment(1) == 'shop' ? 'active' : '' }}"><a href="./shop">Shop</a>
+                        <li class="{{ request()->segment(1) == 'shop' ? 'active' : '' }}"><a href="./shop">SẢN
+                                PHẨM</a>
                         </li>
-                        <li><a href="">Collection</a>
+                        <li><a href="">BỘ SƯU TẬP</a>
                             <ul class="dropdown">
-                                <li><a href="">Men's</a></li>
-                                <li><a href="">Women's</a></li>
-                                <li><a href="">Kid's</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a href="shop/category/{{ $category->name }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="">Pages</a>
+                        <li><a href="contact.html">LiÊN HỆ</a>
                             <ul class="dropdown">
-                                <li><a href="./account/my-order/">My Order</a></li>
-                                <li><a href="blog-details.html">Blog
-                                        Details</a></li>
-                                <li><a href="./cart">Shopping Cart</a></li>
-                                <li><a href="./checkout">Checkout</a></li>
-                                <li><a href="faq.html">Faq</a></li>
-                                <li><a href="register.html">Register</a></li>
-                                <li><a href="./account/login">Login</a></li>
+                                <li><a href="">HƯỚNG DẪN ĐẶT HÀNG</a></li>
+                                <li>
+                                    <a href="">KIỂM TRA SẢN PHẨM TẠI CHI NHÁNH</a>
+                                </li>
+                                <li><a href="">TÀI KHOẢN NGÂN HÀNG</a></li>
+                                <li><a href="">CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                                <li><a href="">CHÍNH SÁCH KHÁCH HÀNG</a></li>
+                                <li><a href="">CHƯƠNG TRÌNH ƯU ĐÃI SINH NHẬT</a></li>
                             </ul>
+                        </li>
+                        <li><a href="">THÔNG TIN</a>
+                            <ul class="dropdown">
+                                <li><a href="./account/my-order/">KIỂM TRA ĐƠN HÀNG</a></li>
+                                <li><a href="./cart">GIỎ HÀNG</a></li>
+                                <li><a href="./checkout">THANH TOÁN</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="register.html">ĐĂNG KÝ</a></li>
+                                <li><a href="./account/login">ĐĂNG NHẬP</a></li>
+
                         </li>
                     </ul>
                 </nav>
@@ -210,37 +215,7 @@
     {{-- => sử dụng @yield('body')  --}}
     @yield('body')
     <!-- Partner Logo Section Begin -->
-    <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="front/img/logo-carousel/logo-1.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="front/img/logo-carousel/logo-2.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="front/img/logo-carousel/logo-3.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="front/img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="front/img/logo-carousel/logo-5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
@@ -252,12 +227,15 @@
                         <a href="index.html">
                             <img src="front/img/footer-logo.png" height="25" alt="">
                         </a>
+
                     </div>
-                    <ul>
-                        <li>311 Nguyen Van Cu, Q.Ninh Kieu, TP.Can Ther</li>
-                        <li>Phone: +84 94.18.40.474</li>
-                        <li>Email: nvkien2000710@student.ctuet.edu.vn</li>
-                    </ul>
+                    <div class="footer-widget">
+                        <ul>
+                            <li><a> Nguyen Van Cu, Q.Ninh Kieu, TP.Can Thơ </a></li>
+                            <li><a>Phone: +84 94.18.40.474</a></li>
+                            <li><a>Email: nvkien@student.ctuet.edu.vn</a></li>
+                        </ul>
+                    </div>
                     <div class="footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
@@ -267,33 +245,35 @@
                 </div>
                 <div class="col-lg-2 offset-lg-1">
                     <div class="footer-widget">
-                        <h5> Information</h5>
+                        <h5>Thông tin</h5>
                         <ul>
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">CheckOut</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Serivius</a></li>
+                            <li><a href="">Về chúng tôi</a></li>
+                            <li><a href="">Thanh toán</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="">Dịch vụ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="footer-widget">
-                        <h5> My Account</h5>
+                        <h5>Tài khoản của tôi</h5>
                         <ul>
-                            <li><a href="">My Account</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">shopping Cart</a></li>
+                            <li><a href="">Tài khoản của tôi</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="">Giỏ hàng</a></li>
                             <li><a href="">Shop</a></li>
+                            <li><a href="">Cửa hàng</a></li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="newslatter-item">
-                        <h5>Join Our Newletter Now</h5>
-                        <p>Get E-mail updates about latest shop and special offers.</p>
+                        <h5>ĐĂNG KÍ NHẬN TIN</h5>
+                        <p>Nhận cập nhật qua email về cửa hàng mới nhất và chương trình khuyến mãi đặc biệt.</p>
                         <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter your Email">
-                            <button type="button">Subcrise</button>
+                            <input type="text" placeholder="Nhập email của bạn">
+                            <button type="button">Đăng ký</button>
                         </form>
                     </div>
                 </div>

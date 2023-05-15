@@ -22,10 +22,10 @@
         </a>
         <div class="product-price">
             @if ($product->discount != null)
-                {{ $product->discount }}vnd
-                <span>{{ $product->price }}</span>
+                {{ number_format($product->price, 0, ',', ',') }}₫
+                <span> {{ number_format($product->discount, 0, ',', '.') }}</span>
             @else
-                {{ $product->price }}vnd
+                {{ number_format($product->price, 0, ',', '.') }}₫
             @endif
         </div>
     </div>

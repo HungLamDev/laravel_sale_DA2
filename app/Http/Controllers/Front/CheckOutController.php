@@ -39,11 +39,13 @@ class CheckOutController extends Controller
         ///1: thêm đơn hàng 
         $data = $request->all();
         $data['status'] = Constant::order_status_ReceiveOrders;
-        $order = $this->orderService->create($request->all());
+        $order = $this->orderService->create($data);
+
+
         /// 2: thêm chi tiết đơn hàng
         $carts = Cart::content();
         foreach ($carts as $cart) {
-            $data = [
+            $dataOrder  = [
                 'order_id' => $order->id,
                 'product_id' => $cart->id,
                 'qty' => $cart->id,
@@ -51,7 +53,8 @@ class CheckOutController extends Controller
                 'total' => $cart->qty * $cart->price,
 
             ];
-            $this->orderDetailService->create($data);
+            $this->orderDetailService->create($dataOrder);
+            dd($data);
         }
         if ($request->payment_type == 'pay_later') {
             //gửi email
@@ -72,7 +75,6 @@ class CheckOutController extends Controller
                 'vnp_Amount' => Cart::total(0, ',', '.'),
 
             ]);
-
 
             //chuyuển  hướng tới địa chỉ trên 
             return redirect()->to($data_url);

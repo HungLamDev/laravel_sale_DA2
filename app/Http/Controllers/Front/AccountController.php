@@ -30,10 +30,15 @@ class AccountController extends Controller
     }
     public function checkLogin(Request $request)
     {
+        if (Constant::user_level_admin) {
+            $level = Constant::user_level_admin;
+        } else {
+            $level = Constant::user_level_client;
+        }
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
-            'level' => Constant::user_level_client, //tài khoản khach hàng
+            'level' => $level, //tài khoản khach hàng
         ];
         $remember = $request->remember;
 
@@ -73,6 +78,8 @@ class AccountController extends Controller
     {
         $categories = $this->productCategoryService->all();
         $orders = $this->orderService->getOrderByUserID(Auth::id());
+
+
         return view('front.account.my-order.index', compact('orders', 'categories'));
     }
     public function myOrderShow($id)

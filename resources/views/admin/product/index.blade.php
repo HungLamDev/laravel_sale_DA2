@@ -11,9 +11,9 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product
+                        Sản Phẩm
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Xem, tạo, cập nhật, xóa và quản lý.
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <span class="btn-icon-wrapper pr-2 opacity-7">
                             <i class="fa fa-plus fa-w-20"></i>
                         </span>
-                        Create
+                        Thêm Sản Phẩm
                     </a>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-search"></i>&nbsp;
-                                        Search
+                                        Tìm kiếm
                                     </button>
                                 </span>
                             </div>
@@ -50,8 +50,8 @@
 
                         <div class="btn-actions-pane-right">
                             <div role="group" class="btn-group-sm btn-group">
-                                <button class="btn btn-focus">This week</button>
-                                <button class="active btn btn-focus">Anytime</button>
+                                <button class="btn btn-focus">Tuần này</button>
+                                <button class="active btn btn-focus">Hiện Tại</button>
                             </div>
                         </div>
                     </div>
@@ -61,11 +61,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Name / Brand</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Qty</th>
-                                    <th class="text-center">Featured</th>
-                                    <th class="text-center">Actions</th>
+                                    <th>Tên / Thương Hiệu</th>
+                                    <th class="text-center">Giá</th>
+                                    <th class="text-center">Số Lượng</th>
+                                    <th class="text-center">Nổi bật</th>
+                                    <th class="text-center">Tác Vụ</th>
                                 </tr>
                             </thead>
 

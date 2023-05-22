@@ -12,7 +12,7 @@
                     <div>
                         Order
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Xem, tạo, cập nhật, xóa và quản lý.
                         </div>
                     </div>
                 </div>
@@ -29,11 +29,11 @@
                         <form>
                             <div class="input-group">
                                 <input type="search" name="search" id="search" value="{{ request('search') }}"
-                                    placeholder="Search everything" class="form-control">
+                                    placeholder="" class="form-control">
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-search"></i>&nbsp;
-                                        Search
+                                        Tìm Kiếm
                                     </button>
                                 </span>
                             </div>
@@ -41,8 +41,8 @@
 
                         <div class="btn-actions-pane-right">
                             <div role="group" class="btn-group-sm btn-group">
-                                <button class="btn btn-focus">This week</button>
-                                <button class="active btn btn-focus">Anytime</button>
+                                <button class="btn btn-focus">Tuần này</button>
+                                <button class="active btn btn-focus">Hiện Tại</button>
                             </div>
                         </div>
                     </div>
@@ -52,22 +52,24 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Customer / Products</th>
-                                    <th class="text-center">Address</th>
-                                    <th class="text-center">Amount</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Actions</th>
+                                    <th>Khách hàng / Sản phẩm</th>
+                                    <th class="text-center">Địa chỉ</th>
+                                    <th class="text-center">Giá</th>
+                                    <th class="text-center">Tình trạng</th>
+                                    <th class="text-center">Tác Vụ</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td class="text-center text-muted">#01</td>
+                                        <td class="text-center text-muted">#{{ $order->id }}</td>
                                         <td>
                                             <div class="widget-content p-0">
                                                 <div class="widget-content-wrapper">
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
+
                                                             <img style="height: 60px;" data-toggle="tooltip" title="Image"
                                                                 data-placement="bottom"
                                                                 src="front/img/products/{{ $order->orderDetails[0]->product->productImages[0]->path }}"
@@ -78,9 +80,18 @@
                                                         <div class="widget-heading">
                                                             {{ $order->first_name . ' ' . $order->last_name }}</div>
                                                         <div class="widget-subheading opacity-7">
-                                                            {{ $order->orderDetails[0]->product->name }}
+
+                                                            @if (isset($order) &&
+                                                                    isset($order->orderDetails) &&
+                                                                    count($order->orderDetails) > 0 &&
+                                                                    isset($order->orderDetails[0]->product) &&
+                                                                    isset($order->orderDetails[0]->product->name))
+                                                                {{ $order->orderDetails[0]->product->name }}
+                                                            @else
+                                                                Không có sản phẩm
+                                                            @endif
                                                             @if (count($order->orderDetails) > 1)
-                                                                (and {{ count($order->orderDetails) }} và sản phẩm khác)
+                                                                và {{ count($order->orderDetails) }} sản phẩm khác)
                                                             @endif
                                                         </div>
                                                     </div>
@@ -91,17 +102,19 @@
                                             {{ $order->street_address . ' - ' . $order->town_city }}
                                         </td>
                                         <td class="text-center">
-                                            {{ array_sum(array_column($order->orderDetails->toArray(), 'total')) }} vnđ
+                                            {{ number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')), 0, ',', '.') }}
+                                            ₫
                                         </td>
                                         <td class="text-center">
                                             <div class="badge badge-dark">
                                                 {{ \App\Utilities\Constant::$order_status[$order->status] }}
+
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             <a href="./admin/order/{{ $order->id }}"
                                                 class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
+                                                Chi tiết
                                             </a>
                                         </td>
                                     </tr>

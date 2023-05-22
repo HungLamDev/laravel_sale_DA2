@@ -206,7 +206,30 @@
                                             <h4>{{ count($product->productComments) }} bình luận</h4>
                                             <div class="comment-option">
                                                 {{-- chưa lấy comment từ khách hàng ram  --}}
+                                                @foreach ($product->productComments as $productComment)
+                                                    <div class="co-item">
+                                                        <div class="avatar-pic">
+                                                            <img src="front/img/user/{{ $productComment->user->avatar ?? 'default-avatar.jpg' }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="avatar-text">
+                                                            <div class="at-rating">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    @if ($i <= $productComment->rating)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @else
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    @endif
+                                                                @endfor
+                                                            </div>
+                                                            <h5>{{ $productComment->name }} <span>
+                                                                    {{ date('M d, Y ', strtotime($productComment->created_at)) }}</span>
 
+                                                            </h5>
+                                                            <div class="at-reply">{{ $productComment->messages }}</div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                                 <div class="leave-comment">
                                                     <h4>Viết bình luận</h4>
                                                     <form action="" method="POST" class="comment-form">

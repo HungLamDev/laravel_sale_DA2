@@ -21,6 +21,8 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        // $orders = $this->orderService->getOrderByUserID(Auth::id());
+        // $order = $this->orderService->find($id);
         $orders = $this->orderService->searchAndPaginate('first_name', $request->get('search'));
         return  view('admin.order.index', compact('orders'));
     }

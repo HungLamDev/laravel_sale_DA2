@@ -26,7 +26,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"></div>
+                {{-- <div class="logo-src"></div> --}}
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -70,7 +70,7 @@
                         <li class="nav-item">
                             <a href="javascript:void(0);" data-placement="bottom" rel="popover-focus" data-offset="300"
                                 data-toggle="popover-custom" class="nav-link">
-                                <i class="nav-link-icon pe-7s-gift"> </i> Mega Menu
+                                <i class="nav-link-icon pe-7s-gift"> </i> Menu
                                 <i class="fa fa-angle-down ml-2 opacity-5"></i>
                             </a>
                             <div class="rm-max-width">
@@ -80,17 +80,17 @@
                                             <div class="no-gutters row">
                                                 <div class="col-sm-6 col-xl-4">
                                                     <ul class="nav flex-column">
-                                                        <li class="nav-item-header nav-item"> Overview</li>
+                                                        <li class="nav-item-header nav-item"> Tổng quan</li>
                                                         <li class="nav-item">
                                                             <a href="javascript:void(0);" class="nav-link">
                                                                 <i class="nav-link-icon lnr-inbox"></i>
-                                                                <span> Contacts</span>
+                                                                <span> Liên hệ</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a href="javascript:void(0);" class="nav-link">
                                                                 <i class="nav-link-icon lnr-book"></i>
-                                                                <span> Incidents</span>
+                                                                <span>Tai nạn</span>
                                                                 <div class="ml-auto badge badge-pill badge-danger">5
                                                                 </div>
                                                             </a>
@@ -98,7 +98,7 @@
                                                         <li class="nav-item">
                                                             <a href="javascript:void(0);" class="nav-link">
                                                                 <i class="nav-link-icon lnr-picture"></i>
-                                                                <span> Companies</span>
+                                                                <span> Công ty</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
@@ -112,10 +112,9 @@
                                                 </div>
                                                 <div class="col-sm-6 col-xl-4">
                                                     <ul class="nav flex-column">
-                                                        <li class="nav-item-header nav-item"> Favourites</li>
+                                                        <li class="nav-item-header nav-item">Yêu thích</li>
                                                         <li class="nav-item">
-                                                            <a href="javascript:void(0);" class="nav-link"> Reports
-                                                                Conversions </a>
+                                                            <a href="javascript:void(0);" class="nav-link">Báo Cáo</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a href="javascript:void(0);" class="nav-link"> Quick Start
@@ -162,7 +161,7 @@
                         </li>
                         <li class="btn-group nav-item">
                             <a class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">4</span> Settings
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">4</span>Cài Đặt
                                 <i class="fa fa-angle-down ml-2 opacity-5"></i>
                             </a>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu">
@@ -201,7 +200,7 @@
                         </li>
                         <li class="dropdown nav-item">
                             <a aria-haspopup="true" data-toggle="dropdown" class="nav-link" aria-expanded="false">
-                                <i class="nav-link-icon pe-7s-settings"></i> Projects
+                                <i class="nav-link-icon pe-7s-settings"></i>Dự Án
                                 <i class="fa fa-angle-down ml-2 opacity-5"></i>
                             </a>
                             <div tabindex="-1" role="menu" aria-hidden="true"

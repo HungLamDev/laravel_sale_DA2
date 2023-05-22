@@ -4,7 +4,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    `<section class="hero-section">
+    <section class="hero-section">
         <div class="hero-items owl-carousel">
             <div class="single-hero-items set-bg" data-setbg="front/img/sale.jpg">
 

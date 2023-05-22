@@ -48,6 +48,7 @@ Route::prefix('checkout')->group(function () {
     route::get('', [CheckOutController::class, 'index']);
     route::post('/', [CheckOutController::class, 'addOrder']);
     route::get('/result', [CheckOutController::class, 'result']);
+    route::get('/vnPayCheck', [CheckOutController::class, 'vnPayCheck']);
 });
 Route::prefix('account')->group(function () {
     route::get('login', [AccountController::class, 'login']);
@@ -72,12 +73,6 @@ Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
     Route::resource('product/{product_id}/image', ProductimageController::class);
     Route::resource('product/{product_id}/detail', ProductDetailController::class);
     Route::resource('order', OrderController::class);
-
-
-
-
-
-
     Route::prefix('login')->group(function () {
         route::get('', [\App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');
         route::post('', [\App\Http\Controllers\Admin\HomeController::class, 'postLogin'])->withoutMiddleware('CheckAdminLogin');

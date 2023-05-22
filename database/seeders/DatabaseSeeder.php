@@ -77,26 +77,26 @@ class DatabaseSeeder extends Seeder
         DB::table('blogs')->insert([
             [
                 'user_id' => 3,
-                'title' => 'The Personality Trait That Makes People Happier',
+                'title' => 'RỘN RÀNG KHÔNG KHÍ SALE TẠI JAN SHOP',
                 'image' => 'blog-1.jpg',
                 'subtitle' => '',
                 'category' => 'TRAVEL',
-                'content' => '',
+                'content' => 'Không khí Sale vô cùng rộn rã đang diễn ra tại các chi nhánh trên toàn quốc tại Jan Shop. Với những DEAl CỰC CHẤT - DEAL CHỐNG DEAL cực xịn, bạn tha hồ mua sắm để vi vu dịp Lễ này.',
             ],
             [
                 'user_id' => 3,
-                'title' => 'This was one of our first days in Hawaii last week.',
+                'title' => 'LỄ RỘN RÀNG - SALE SẬP SÀN',
                 'image' => 'blog-2.jpg',
                 'subtitle' => '',
-                'category' => 'CodeLeanON',
+                'category' => 'Từ ngày 22/04 đến 30/4/2023 Jan Shop mang đến bạn chương trình SALE SIÊU TO - GIÁ SIÊU SỐC vô cùng hấp dẫn để hòa chung không khí tưng bừng, rộn ràng của ngày Giải Phóng, chi tiết chương trình ở đây',
                 'content' => '',
             ],
             [
                 'user_id' => 3,
-                'title' => 'Last week I had my first work trip of the year to Sonoma Valley',
+                'title' => 'ĐÓN ĐẦU” LÀN SÓNG Y2K TRỞ LẠI TRONG NĂM 2023',
                 'subtitle' => '',
                 'image' => 'blog-3.jpg',
-                'category' => 'TRAVEL',
+                'category' => 'Thời trang đầu những năm 2000, thường được gọi là Y2K, đang là xu hướng mới nhất. Làm sao để đón đầu làn gió này? Hãy cùng JAN SHOP tìm hiểu qua bài viết “ĐÓN ĐẦU” LÀN SÓNG Y2K TRỞ LẠI TRONG NĂM 2023.',
                 'content' => '',
             ],
             [

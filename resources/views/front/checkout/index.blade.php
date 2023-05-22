@@ -11,59 +11,59 @@
                     @if (Cart::count() > 0)
                         <div class="col-lg-6">
                             <div class="checkout-content">
-                                <a href="login.html" class="content-btn">Click Here To Login</a>
+                                <a href="./account/login" class="content-btn">nhấp vào đây để Đăng nhập</a>
                             </div>
-                            <h4>Billing Detials</h4>
+                            <h4>Thông Tin khách Hàng</h4>
                             <div class="row">
                                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id ?? '' }}">
                                 <div class="col-lg-6">
-                                    <label for="fir">first Name <span>*</span></label>
+                                    <label for="fir">Tên <span>*</span></label>
                                     <input type="text" id="fir" name="first_name"
                                         value="{{ Auth::user()->name ?? '' }}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="last">Last Name <span>*</span></label>
+                                    <label for="last">Họ <span>*</span></label>
                                     <input type="text" id="last" name="last_name">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="cun-name">Company Name</label>
+                                    <label for="cun-name">Tên công ty</label>
                                     <input type="text" id="cun-name" name="company_name"
                                         value="{{ Auth::user()->company_name ?? '' }}">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="cun">Country<span>*</span></label>
+                                    <label for="cun">Quốc gia<span>*</span></label>
                                     <input type="text" id="cun" name="country_name"
                                         value="{{ Auth::user()->country ?? '' }}">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="street">Street Address<span>*</span></label>
+                                    <label for="street">Địa chỉ <span>*</span></label>
                                     <input type="text" id="street" name="street_address" class="street-first"
                                         value="{{ Auth::user()->street_address ?? '' }}">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="zip">Postcode / ZIP (optinal)</label>
+                                    <label for="zip">Mã bưu chính</label>
                                     <input type="text" id="zip" name="postcode_zip"
                                         value="{{ Auth::user()->postcode_zip ?? '' }}">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="town">Town / City <span>*</span></label>
+                                    <label for="town">Thị trấn / Thành phố <span>*</span></label>
                                     <input type="text" id="town" name="town_city"
                                         value="{{ Auth::user()->town_city ?? '' }}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="email">Email Address <span>*</span></label>
+                                    <label for="email">Địa chỉ email<span>*</span></label>
                                     <input type="text" id="email" name="email"
                                         value="{{ Auth::user()->email ?? '' }}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="phone">Phone <span>*</span></label>
+                                    <label for="phone">Điện thoại <span>*</span></label>
                                     <input type="text" id="phone" name="phone"
                                         value="{{ Auth::user()->phone ?? '' }}">
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="create-item">
                                         <label for="acc-create">
-                                            Create an account
+                                            Tạo tài khoản
                                             <input type="checkbox" id="acc-create">
                                             <span class="checkmark"></span>
                                         </label>
@@ -73,23 +73,29 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="checkout-content">
-                                <input type="text" placeholder="Enter Your Coupon Code">
+                                <input type="text" placeholder="Nhập Mã giảm giá của bạn">
                             </div>
                             <div class="place-order">
-                                <h4>Your Order</h4>
+                                <h4>Đơn hàng của bạn</h4>
                                 <div class="order-total">
                                     <ul class="order-table">
-                                        <li>Product <span>Total</span></li>
+                                        <li>Sản Phẩm <span>Tất Cả</span></li>
                                         @foreach ($carts as $cart)
-                                            <li class="fw-normal">{{ $cart->name }} x {{ $cart->qty }}
-                                                <span>{{ $cart->price * $cart->qty }} vnđ</span>
+                                            <li class="fw-normal">{{ number_format($cart->price, 0, ',', '.') }} x
+                                                {{ $cart->qty }}
+                                                <span>{{ number_format($cart->price * $cart->qty, 0, ',', '.') }}₫</span>
                                             </li>
                                         @endforeach
 
+                                        <li class="fw-normal">Tổng thu
+                                            <span>{{ number_format(floatval($subtotal), 0, ',', '.') }}₫</span>
+                                        </li>
+                                        <li class="total-price">Tất Cả
+                                            <span>{{ number_format(floatval($total), 0, ',', '.') }}₫</span>
+                                        </li>
 
 
-                                        <li class="fw-normal">Subtotal <span>{{ $subtotal }} vnđ</span></li>
-                                        <li class="total-price">Total <span>{{ $total }} vnđ </span></li>
+
                                     </ul>
                                     <div class="payment-check">
                                         <div class="pc-item">
@@ -110,7 +116,7 @@
                                         </div>
                                     </div>
                                     <div class="order-btn">
-                                        <button type="submit" class="site-btn place-btn">Place Order</button>
+                                        <button type="submit" class="site-btn place-btn">Đặt Hàng</button>
                                     </div>
                                 </div>
                             </div>

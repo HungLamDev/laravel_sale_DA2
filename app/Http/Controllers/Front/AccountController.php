@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Service\Order\OrderServiceinterface;
+use App\Service\ProductCategory\ProductCategoryService;
 use App\Service\User\UserServiceinterface;
 use App\Utilities\Constant;
 use Illuminate\Http\Request;
@@ -14,23 +15,30 @@ class AccountController extends Controller
 {
     private $userService;
     private $orderService;
-
-    public function __construct(UserServiceinterface $userService, OrderServiceinterface $orderService)
+    private $productCategoryService;
+    public function __construct(UserServiceinterface $userService, OrderServiceinterface $orderService, ProductCategoryService $productCategoryService)
     {
+        $this->productCategoryService  = $productCategoryService;
         $this->userService = $userService;
         $this->orderService = $orderService;
     }
 
     public function login()
     {
-        return view('front.account.login');
+        $categories = $this->productCategoryService->all();
+        return view('front.account.login', compact('categories'));
     }
     public function checkLogin(Request $request)
     {
+        if (Constant::user_level_admin) {
+            $level = Constant::user_level_admin;
+        } else {
+            $level = Constant::user_level_client;
+        }
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
-            'level' => Constant::user_level_client, //tài khoản khach hàng
+            'level' => $level, //tài khoản khach hàng
         ];
         $remember = $request->remember;
 
@@ -48,7 +56,8 @@ class AccountController extends Controller
     }
     public function register()
     {
-        return view('front.account.register');
+        $categories = $this->productCategoryService->all();
+        return view('front.account.register', compact('categories'));
     }
     public function postRegister(Request $request)
     {
@@ -67,12 +76,17 @@ class AccountController extends Controller
     }
     public function myOrderIndex()
     {
+        $categories = $this->productCategoryService->all();
         $orders = $this->orderService->getOrderByUserID(Auth::id());
-        return view('front.account.my-order.index', compact('orders'));
+
+
+        return view('front.account.my-order.index', compact('orders', 'categories'));
     }
     public function myOrderShow($id)
     {
+        $categories = $this->productCategoryService->all();
+
         $order = $this->orderService->find($id);
-        return view('front.account.my-order.show', compact('order'));
+        return view('front.account.my-order.show', compact('order', 'categories'));
     }
 }

@@ -12,9 +12,10 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product
+                        Sản Phẩm
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Xem, tạo, cập nhật, xóa và quản lý.
+
                         </div>
                     </div>
                 </div>
@@ -28,7 +29,7 @@
                         <form method="post" action="admin/product" enctype="multipart/form-data">
                             @csrf
                             <div class="position-relative row form-group">
-                                <label for="brand_id" class="col-md-3 text-md-right col-form-label">Brand</label>
+                                <label for="brand_id" class="col-md-3 text-md-right col-form-label">Thương hiệu</label>
                                 <div class="col-md-9 col-xl-8">
                                     <select required name="brand_id" id="brand_id" class="form-control">
                                         <option value="">-- Brand --</option>
@@ -42,8 +43,7 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="product_category_id"
-                                    class="col-md-3 text-md-right col-form-label">Category</label>
+                                <label for="product_category_id" class="col-md-3 text-md-right col-form-label">Loại</label>
                                 <div class="col-md-9 col-xl-8">
                                     <select required name="product_category_id" id="product_category_id"
                                         class="form-control">
@@ -60,49 +60,49 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="name" class="col-md-3 text-md-right col-form-label">Name</label>
+                                <label for="name" class="col-md-3 text-md-right col-form-label">Tên</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="name" id="name" placeholder="Name" type="text"
+                                    <input required name="name" id="name" placeholder="Tên" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="content" class="col-md-3 text-md-right col-form-label">Content</label>
+                                <label for="content" class="col-md-3 text-md-right col-form-label">Nội dung</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="content" id="content" placeholder="Content" type="text"
+                                    <input required name="content" id="content" placeholder="Nội dung" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="price" class="col-md-3 text-md-right col-form-label">Price</label>
+                                <label for="price" class="col-md-3 text-md-right col-form-label">Giá</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="price" id="price" placeholder="Price" type="text"
+                                    <input required name="price" id="price" placeholder="Giá" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="discount" class="col-md-3 text-md-right col-form-label">Discount</label>
+                                <label for="discount" class="col-md-3 text-md-right col-form-label">Giảm giá</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="discount" id="discount" placeholder="Discount" type="text"
+                                    <input required name="discount" id="discount" placeholder="Giảm giá" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="weight" class="col-md-3 text-md-right col-form-label">Weight</label>
+                                <label for="weight" class="col-md-3 text-md-right col-form-label">Trọng lượng</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="weight" id="weight" placeholder="Weight" type="text"
+                                    <input required name="weight" id="weight" placeholder="Trọng lượng" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="sku" class="col-md-3 text-md-right col-form-label">SKU</label>
+                                <label for="sku" class="col-md-3 text-md-right col-form-label">Mã</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="sku" id="sku" placeholder="SKU" type="text"
+                                    <input required name="sku" id="sku" placeholder="Mã" type="text"
                                         class="form-control" value="">
                                 </div>
                             </div>
@@ -116,20 +116,20 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="featured" class="col-md-3 text-md-right col-form-label">Featured</label>
+                                <label for="featured" class="col-md-3 text-md-right col-form-label">Nổi bật</label>
                                 <div class="col-md-9 col-xl-8">
                                     <div class="position-relative form-check pt-sm-2">
                                         <input name="featured" id="featured" type="checkbox" value="1"
                                             class="form-check-input">
-                                        <label for="featured" class="form-check-label">Featured</label>
+                                        <label for="featured" class="form-check-label">Nổi bật</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="description" class="col-md-3 text-md-right col-form-label">Description</label>
+                                <label for="description" class="col-md-3 text-md-right col-form-label">Mô tả</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                                    <textarea class="form-control" name="description" id="description" placeholder="Mô tả"></textarea>
                                 </div>
                             </div>
 
@@ -139,14 +139,14 @@
                                         <span class="btn-icon-wrapper pr-1 opacity-8">
                                             <i class="fa fa-times fa-w-20"></i>
                                         </span>
-                                        <span>Cancel</span>
+                                        <span>Hủy</span>
                                     </a>
 
                                     <button type="submit" class="btn-shadow btn-hover-shine btn btn-primary">
                                         <span class="btn-icon-wrapper pr-2 opacity-8">
                                             <i class="fa fa-download fa-w-20"></i>
                                         </span>
-                                        <span>Save</span>
+                                        <span>Lưu</span>
                                     </button>
                                 </div>
                             </div>

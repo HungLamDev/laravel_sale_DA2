@@ -11,9 +11,9 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product deatil
+                        Chi tiết Sản phẩm
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Xem, tạo, cập nhật, xóa và quản lý.
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                             <div class="position-relative row form-group">
-                                <label class="col-md-3 text-md-right col-form-label">Product Name</label>
+                                <label class="col-md-3 text-md-right col-form-label">Tên sản phẩm</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input disabled placeholder="Product Name" type="text" class="form-control"
                                         value="{{ $product->name }}">
@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="color" class="col-md-3 text-md-right col-form-label">Color</label>
+                                <label for="color" class="col-md-3 text-md-right col-form-label">Màu</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input required name="color" id="color" placeholder="Color" type="text"
                                         class="form-control" value="">
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="qty" class="col-md-3 text-md-right col-form-label">Qty</label>
+                                <label for="qty" class="col-md-3 text-md-right col-form-label">Số lượng</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input required name="qty" id="qty" placeholder="Qty" type="text"
                                         class="form-control" value="">
@@ -67,14 +67,14 @@
                                         <span class="btn-icon-wrapper pr-1 opacity-8">
                                             <i class="fa fa-times fa-w-20"></i>
                                         </span>
-                                        <span>Cancel</span>
+                                        <span>Hủy</span>
                                     </a>
 
                                     <button type="submit" class="btn-shadow btn-hover-shine btn btn-primary">
                                         <span class="btn-icon-wrapper pr-2 opacity-8">
                                             <i class="fa fa-download fa-w-20"></i>
                                         </span>
-                                        <span>Save</span>
+                                        <span>Lưu</span>
                                     </button>
                                 </div>
                             </div>

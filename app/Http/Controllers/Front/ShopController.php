@@ -19,22 +19,22 @@ class ShopController extends Controller
     private $brandService;
     // ProductCommentServiceinterface $productCommentService
 
-    public function __construct(ProductServiceInterface $productService, ProductCategoryServiceinterface $productCategoryService, ProductCommentServiceinterface $productCommentService,)
+    public function __construct(ProductServiceInterface $productService, ProductCategoryServiceinterface $productCategoryService, ProductCommentServiceinterface $productCommentService, BrandServiceinterface  $brandService)
     {
         $this->productService = $productService;
         $this->productCommentService = $productCommentService;
         $this->productCategoryService = $productCategoryService;
-        // $this->brandService = $brandService;
+        $this->brandService = $brandService;
     }
 
     public function show($id)
     {
         $categories = $this->productCategoryService->all();
-        //$brands = $this->brandService->all();
+        $brands = $this->brandService->all();
         $product = $this->productService->find($id);
         $relatedProduct = $this->productService->getRelatedProducts($product);
 
-        return view('front.shop.show', compact('product', 'relatedProduct', 'categories'));
+        return view('front.shop.show', compact('product', 'relatedProduct', 'categories', 'brands'));
     }
     public function postComment(Request $request)
     {
@@ -44,15 +44,15 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $categories = $this->productCategoryService->all();
-        // $brands = $this->brandService->all();
+        $brands = $this->brandService->all();
         $products = $this->productService->getProductOnindex($request);
-        return view('front.shop.index', compact('products', 'categories',));
+        return view('front.shop.index', compact('products', 'categories', 'brands'));
     }
     public function category($categoryName, Request $request)
     {
         $categories = $this->productCategoryService->all();
-        // $brands = $this->brandService->all();
+        $brands = $this->brandService->all();
         $products = $this->productService->getProductByCategory($categoryName, $request);
-        return view('front.shop.index', compact('products', 'categories',));
+        return view('front.shop.index', compact('products', 'categories', 'brands'));
     }
 }

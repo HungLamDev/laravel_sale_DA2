@@ -4,11 +4,14 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    `<section class="hero-section">
+    <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="front/img/hero-1.jpg">
+            <div class="single-hero-items set-bg" data-setbg="front/img/sale.jpg">
+
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="front/img/cuahang.jpg">
                 <div class="container">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-5">
                             <span>Bag, Kids</span>
                             <h1>Black Friday</h1>
@@ -18,23 +21,11 @@
                     </div>
                     <div class="off-card">
                         <h2>Sale <span>50%</span></h2>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="front/img/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag, Kids</span>
-                            <h1>Black Friday</h1>
-                            <p>San pham khong phai la thuoc khong co tac dung thay the thuoc chua benh</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
-                </div>
+            <div class="single-hero-items set-bg" data-setbg="front/img/new.jpg">
+
             </div>
         </div>
     </section>
@@ -48,7 +39,7 @@
                     <div class="single-banner">
                         <img src="front/img/banner-1.jpg" alt="">
                         <div class="inner-text">
-                            <h4>Men's</h4>
+                            <h4>Nam</h4>
                         </div>
                     </div>
                 </div>
@@ -56,7 +47,7 @@
                     <div class="single-banner">
                         <img src="front/img/banner-2.jpg" alt="">
                         <div class="inner-text">
-                            <h4>Women's</h4>
+                            <h4>Nữ</h4>
                         </div>
                     </div>
                 </div>
@@ -64,7 +55,7 @@
                     <div class="single-banner">
                         <img src="front/img/banner-3.jpg" alt="">
                         <div class="inner-text">
-                            <h4>Kid's</h4>
+                            <h4>Trẻ Em</h4>
                         </div>
                     </div>
                 </div>
@@ -79,8 +70,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="front/img/products/women-large.jpg">
-                        <h2>Women's</h2>
-                        <a href="#">Disover More</a>
+                        <h2>Nữ</h2>
+                        <a href="shop/category/Nữ">Xem Thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-1">
@@ -106,33 +97,32 @@
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
-                    <h2>Deal Of The Week</h2>
-                    <p>San pham khong phai la thuoc khong co tac dung thay the thuoc chua benh <br /> Write somethings
+                    <h2>Ưu đãi trong tuần</h2>
+                    <p>Đồng giá chỉ từ 99k-149k-199k <br />SALE UP TO 70%
                     </p>
                     <div class="product-price">
-                        $35.00
-                        <span>/ HandBag</span>
+                        Mua nhiều giảm nhiều
                     </div>
                 </div>
                 <div class="countdown-timer" id="countdown">
                     <div class="cd-item">
                         <span>56</span>
-                        <p>Days</p>
+                        <p>Ngày</p>
                     </div>
                     <div class="cd-item">
                         <span>12</span>
-                        <p>Hrs</p>
+                        <p>Giờ</p>
                     </div>
                     <div class="cd-item">
                         <span>48</span>
-                        <p>Min</p>
+                        <p>Phút</p>
                     </div>
                     <div class="cd-item">
                         <span>52</span>
-                        <p>Secs</p>
+                        <p>Giây</p>
                     </div>
                 </div>
-                <a href="" class="primary-btn">Shop Now</a>
+                <a href="" class="primary-btn">Mua Ngay</a>
             </div>
         </div>
     </section>
@@ -144,8 +134,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="front/img/products/man-large.jpg">
-                        <h2>Men's</h2>
-                        <a href="#">Disover More</a>
+                        <h2>Nam</h2>
+                        <a href="shop/category/Nam">Xem Thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-1">
@@ -210,13 +200,14 @@
     </div>
     <!-- Instagram Section End -->
 
+
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>From The Blog</h2>
+                        <h2>TIN TỨC THỜI TRANG </h2>
                     </div>
                 </div>
             </div>
@@ -240,7 +231,7 @@
                                 <a href="">
                                     <h4>{{ $blog->title }}</h4>
                                 </a>
-                                <p>{{ $blog->subtitle }}</p>
+                                <p>{{ $blog->content }}</p>
                             </div>
                         </div>
                     </div>
@@ -251,33 +242,35 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-1.png" alt="">
+                                <img src="/front/img/icon-1.png" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Freeship toàn quốc</h6>
+                                <p>Với hóa đơn trên 500.000₫</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-2.png" alt="">
+                                <img src="/front/img/icon-2.png" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Giao Hàng Nhanh</h6>
+                                <p>Giao nội tỉnh 6-12h
+                                    Giao nội miền 24-36h
+                                    Giao liên miền 48h</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-3.png" alt="">
+                                <img src="/front/img/icon-3.png" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Thanh toán an toàn</h6>
+                                <p>bảo mật thông tin 100%</p>
                             </div>
                         </div>
                     </div>

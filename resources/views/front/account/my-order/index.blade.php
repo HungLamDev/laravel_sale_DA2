@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>My Order</span>
+                        <a href="index.html"><i class="fa fa-home"></i> Trang Chủ</a>
+                        <span> Đơn Hàng</span>
                     </div>
                 </div>
             </div>
@@ -38,20 +38,22 @@
                                     <tr data-rowid="">
                                         <td class="cart-pic first-row">
                                             <img class="pl-5" style="height: 100px;"
-                                                src="front/img/products/{{ $order->orderDetails[0]->product->productImages[0]->path }}"
+                                                src="front/img/products/{{ $order->orderDetails[0]->product->productImages[0]->path ?? 'DEFAU.JPG' }}"
                                                 alt="">
                                         </td>
                                         <td class="first-row">{{ $order->id }}
                                         </td>
                                         <td class="cart-title first-row">
-                                            <h5>{{ $order->orderDetails[0]->product->name }}
+                                            <h5>{{ $order->orderDetails[0]->product->name ?? '' }}
                                                 @if (count($order->orderDetails) > 1)
-                                                    (and {{ count($order->orderDetails) }} other products)
+                                                    (Và {{ count($order->orderDetails) }} sản phẩm khác)
                                                 @endif
                                             </h5>
                                         </td>
                                         <td class="total-price first-row">
-                                            {{ array_sum(array_column($order->orderDetails->toArray(), 'total')) }} vnđ</td>
+                                            {{ number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')), 0, ',', '.') }}
+                                            ₫
+                                        </td>
                                         <td class=" first-row"><a class="btn"
                                                 href="./account/my-order/{{ $order->id }}">Chi tiết</a></td>
                                     </tr>

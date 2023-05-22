@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Register</span>
+                        <a href="index.html"><i class="fa fa-home"></i> Trang chủ</a>
+                        <span>Đăng ký</span>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
-                        <h2>Register</h2>
+                        <h2>Đăng ký</h2>
                         @if (session('notification'))
                             <div class="alert alert-warning" role="alert
                     ">
@@ -34,25 +34,25 @@
                         <form action="" method="POST">
                             @csrf
                             <div class="group-input">
-                                <label for="name">Name *</label>
+                                <label for="name">Tên *</label>
                                 <input type="text" id="name" name="name">
                             </div>
                             <div class="group-input">
-                                <label for="email">Username or Email address *</label>
+                                <label for="email">Tên đăng nhập hoặc địa chỉ Email *</label>
                                 <input type="text" id="username" name="email">
                             </div>
                             <div class="group-input">
-                                <label for="pass">Password *</label>
+                                <label for="pass">Mật khẩu *</label>
                                 <input type="password" id="pass" name="password">
                             </div>
                             <div class="group-input">
-                                <label for="con-pass">Confirm Password *</label>
+                                <label for="con-pass">Xác nhận mật khẩu *</label>
                                 <input type="password" id="con-pass" name="passwork_confirmation">
                             </div>
-                            <button type="submit" class="site-btn login-btn">REGISTER</button>
+                            <button type="submit" class="site-btn login-btn">ĐăNG KÝ</button>
                         </form>
                         <div class="switch-login">
-                            <a href="./account/login" class="or-login">Login</a>
+                            <a href="./account/login" class="or-login">ĐĂNG NHẬP</a>
                         </div>
                     </div>
                 </div>
